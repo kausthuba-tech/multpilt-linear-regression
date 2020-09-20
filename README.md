@@ -1,4 +1,4 @@
-# multpilt-linear-regression
+# multpile-linear-regression
 
 experience	test_score	interview_score	salary
 zero	8	9	50000
