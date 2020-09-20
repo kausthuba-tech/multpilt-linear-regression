@@ -1,0 +1,22 @@
+
+import pandas as pd 
+import matplotlib.pyplot as plt
+import math
+from sklearn import linear_model
+from word2number import w2n
+url=r"C:\Users\USER\Desktop\salary datset.csv"
+df=pd.read_csv(url)
+print(df)
+df_test=math.floor(df["test_score"].median())
+df["test_score"]=df["test_score"].fillna(df_test)
+print(df["test_score"])
+df["experience"]=df["experience"].apply(w2n.word_to_num)
+print(df)
+reg=linear_model.LinearRegression()
+print(reg.fit(df[["experience","test_score","interview_score"]],df[["salary"]]))
+print(reg.coef_)
+print(reg.intercept_)
+pred=reg.predict([[1,7.0,9]])
+print(pred)
+y=2812.95487627*1+1845.70596798*7.0+2205.24017467*9+17737.3216885
+print(y)
